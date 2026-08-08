@@ -1,0 +1,141 @@
+/* ---- Fonts (matches the original portfolio) ----
+   Must be the very first @import — CSS requires @import before all
+   other statements, and the Tailwind imports below expand into rules. */
+@import url("https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700;12..96,800&family=IBM+Plex+Mono:wght@400;500&family=Instrument+Sans:wght@400;500;600&display=swap");
+
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  --radius: 0.625rem;
+
+  /* Cool Blues palette ported from the original site */
+  --background: #f0f4f8;      /* porcelain */
+  --foreground: #0f1b31;      /* ink */
+  --card: #ffffff;
+  --card-foreground: #0f1b31;
+  --popover: #ffffff;
+  --popover-foreground: #0f1b31;
+  --primary: #0e8078;         /* teal accent */
+  --primary-foreground: #ffffff;
+  --secondary: #d8e1ea;       /* hairline */
+  --secondary-foreground: #0f1b31;
+  --muted: #e6edf3;
+  --muted-foreground: #3a506b;  /* ink-soft */
+  --accent: #5bc0be;          /* tropical teal */
+  --accent-foreground: #0b132b;
+  --destructive: #d64545;
+  --border: #d8e1ea;
+  --input: #d8e1ea;
+  --ring: #0e8078;
+}
+
+.dark {
+  --background: #0b132b;       /* ink-panel (prussian) */
+  --foreground: #e9f0f8;
+  --card: #0f1b31;
+  --card-foreground: #e9f0f8;
+  --popover: #0f1b31;
+  --popover-foreground: #e9f0f8;
+  --primary: #5bc0be;         /* tropical teal reads well on dark */
+  --primary-foreground: #0b132b;
+  --secondary: #1b2a45;
+  --secondary-foreground: #e9f0f8;
+  --muted: #1b2a45;
+  --muted-foreground: #97a39e;
+  --accent: #6fffe9;          /* neon-ice */
+  --accent-foreground: #0b132b;
+  --destructive: #ff6b6b;
+  --border: rgba(255, 255, 255, 0.12);
+  --input: rgba(255, 255, 255, 0.15);
+  --ring: #5bc0be;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+
+  --font-sans: "Instrument Sans", system-ui, sans-serif;
+  --font-mono: "IBM Plex Mono", monospace;
+  --font-display: "Bricolage Grotesque", sans-serif;
+
+  /* ---- Extra brand colors from the original "Cool Blues" palette ----
+     These become Tailwind utilities automatically, e.g.:
+     text-copper, bg-ink-panel, border-hairline, text-teal-bright ... */
+  --color-copper: #0e8078;       /* main accent (buttons, dots, rings)   */
+  --color-copper-deep: #0a5f57;  /* darker accent — label text, badges   */
+  --color-teal-link: #0c7268;    /* in-prose links on light background   */
+  --color-ink: #0f1b31;          /* primary heading text                 */
+  --color-ink-soft: #3a506b;     /* body text                            */
+  --color-ink-faint: #55688a;    /* faint metadata text                  */
+  --color-ink-panel: #0b132b;    /* dark panel surfaces (scan/agent box) */
+  --color-hairline: #d8e1ea;     /* light borders                        */
+  --color-teal-bright: #5bc0be;  /* accent used ON dark panels only      */
+  --color-neon-ice: #6fffe9;     /* highlight used ON dark panels only   */
+  --animate-shiny-text: shiny-text 8s infinite;
+  --animate-marquee: marquee var(--duration) infinite linear;
+  --animate-marquee-vertical: marquee-vertical var(--duration) linear infinite;
+  @keyframes shiny-text {
+  0%, 90%, 100% {
+    background-position: calc(-100% - var(--shiny-width)) 0;
+    }
+  30%, 60% {
+    background-position: calc(100% + var(--shiny-width)) 0;
+    }
+  }
+  @keyframes marquee {
+  from {
+    transform: translateX(0);
+    }
+  to {
+    transform: translateX(calc(-100% - var(--gap)));
+    }
+  }
+  @keyframes marquee-vertical {
+  from {
+    transform: translateY(0);
+    }
+  to {
+    transform: translateY(calc(-100% - var(--gap)));
+    }
+  }
+}
+
+@layer base {
+  * {
+    border-color: var(--border);
+  }
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    margin: 0;
+    background-color: var(--background);
+    color: var(--foreground);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+  }
+}
