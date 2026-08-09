@@ -25,6 +25,11 @@ import { Skills } from "@/components/sections/Skills"
 import { Contact } from "@/components/sections/Contact"
 import { TraceDivider } from "@/components/primitives"
 import { ResumeProvider } from "@/components/ResumeDialog"
+// Vercel telemetry. The `/react` entrypoints are the framework-agnostic ones —
+// the dashboard's default snippet shows `@vercel/analytics/next`, which is for
+// Next.js and would fail to resolve in this Vite app.
+import { Analytics } from "@vercel/analytics/react"
+import { SpeedInsights } from "@vercel/speed-insights/react"
 
 function App() {
   return (
@@ -51,6 +56,11 @@ function App() {
         </main>
 
         <Contact />
+
+        {/* Render nothing visible; they only inject the tracking beacons.
+            Both no-op in development and outside Vercel. */}
+        <Analytics />
+        <SpeedInsights />
       </div>
     </ResumeProvider>
   )
