@@ -11,12 +11,24 @@
       name="description"
       content="Dhiraj Rishi Atmakuri — Computer Engineering, Texas A&M '26. I build products end to end: BLE firmware, embedded systems, React Native apps, and cloud backends."
     />
+    <!-- Canonical + og:url must be ABSOLUTE. This is the live Vercel address;
+         update both if a custom domain is ever attached. -->
+    <link rel="canonical" href="https://portfolio-react-alpha-pearl.vercel.app/" />
     <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://portfolio-react-alpha-pearl.vercel.app/" />
     <meta property="og:title" content="Dhiraj Rishi Atmakuri — Computer Engineer" />
     <meta
       property="og:description"
       content="Full-stack & embedded engineer — from BLE firmware and soldered circuits to React Native apps and cloud backends. Texas A&M '26, open to work."
     />
+    <!-- og:image cannot be a relative path — crawlers fetch it from their own
+         servers, so it has to resolve on its own. -->
+    <meta
+      property="og:image"
+      content="https://portfolio-react-alpha-pearl.vercel.app/assets/portrait.jpg"
+    />
+    <meta property="og:image:alt" content="Dhiraj Rishi Atmakuri" />
+    <meta name="twitter:card" content="summary_large_image" />
 
     <!-- Favicon: dark rounded square with a teal ">" prompt, inlined as SVG -->
     <link

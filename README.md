@@ -1,6 +1,24 @@
-# React + TypeScript + Vite
+# Portfolio — Dhiraj Rishi Atmakuri
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+**Live:** https://portfolio-react-alpha-pearl.vercel.app/
+
+Personal portfolio site. React 19 + TypeScript + Vite + Tailwind v4, deployed on
+Vercel — pushes to `main` trigger a production deploy.
+
+```bash
+npm install
+npm run dev      # local dev server on :5173
+npm run build    # tsc -b && vite build  (what Vercel runs)
+```
+
+All copy and project data lives in `src/data/content.tsx` — edit there, not in
+the components.
+
+---
+
+## Template notes
+
+This started from the Vite React-TS template, which provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
 
 Currently, two official plugins are available:
 
