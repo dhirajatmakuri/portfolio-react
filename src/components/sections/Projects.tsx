@@ -81,15 +81,22 @@ function ProjectRow({
         showDivider ? " border-t border-hairline" : ""
       }`}
     >
-      {/* left meta column: dates + course context */}
-      <div className="flex flex-row flex-wrap gap-3.5 font-mono text-xs tracking-[0.04em] md:flex-col md:gap-1.5">
+      {/* left meta column: dates + course context.
+          min-w-0 stops the default `min-width:auto` on grid items, which would
+          otherwise let intrinsically-wide content push the column past the
+          viewport (see the right column for the case that actually bit us). */}
+      <div className="flex min-w-0 flex-row flex-wrap gap-3.5 font-mono text-xs tracking-[0.04em] md:flex-col md:gap-1.5">
         <span className="text-ink-faint">{project.when}</span>
         <span className="text-teal-link">{project.context}</span>
         {project.extra && <span className="text-ink-faint">{project.extra}</span>}
       </div>
 
-      {/* right content column */}
-      <div>
+      {/* right content column.
+          min-w-0 is load-bearing: the water-reflection demo renders an
+          800px-wide <canvas>, and a grid item's default `min-width:auto`
+          refuses to shrink below that intrinsic size — which pushed the whole
+          page to 497px on a 375px phone. */}
+      <div className="min-w-0">
         <h3 className="mb-2 font-[family-name:var(--font-display)] text-[1.45rem] font-bold tracking-[-0.01em] text-ink">
           {project.title}
         </h3>

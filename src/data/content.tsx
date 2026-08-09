@@ -21,7 +21,7 @@ export const IDENTITY = {
   email: "rishi.atmakuri@gmail.com",
   phone: "(346) 404-5507",
   phoneHref: "tel:+13464045507",
-  linkedin: "https://www.linkedin.com/in/dhiraj-rishi-atmakuri-b69255282",
+  linkedin: "https://www.linkedin.com/in/dhiraj-atmakuri",
   github: "https://github.com/dhirajatmakuri",
   resume: "/assets/dhiraj-atmakuri-resume.pdf",
   location: "Houston, TX",

@@ -99,12 +99,14 @@ export function StackStrip({ stack }: { stack: string[] }) {
             <Icon className="h-[22px] w-[22px]" aria-hidden />
           </div>
 
-          {/* hover tooltip with the tech's name */}
+          {/* Hover tooltip with the tech's name. Hidden below md: there is no
+              hover on touch, and the -translate-x-1/2 centring pushed it off
+              the left edge of the viewport on phones (x = -27px). */}
           <span
             aria-hidden="true"
-            className="pointer-events-none absolute -top-8 left-1/2 -translate-x-1/2 whitespace-nowrap
+            className="pointer-events-none absolute -top-8 left-1/2 hidden -translate-x-1/2 whitespace-nowrap
               rounded bg-ink px-2 py-1 font-mono text-[0.68rem] text-white opacity-0
-              transition-opacity duration-150 group-hover:opacity-100"
+              transition-opacity duration-150 group-hover:opacity-100 md:block"
           >
             {name}
           </span>
