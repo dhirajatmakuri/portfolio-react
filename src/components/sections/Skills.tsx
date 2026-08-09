@@ -14,9 +14,12 @@
 import { Reveal } from "@/components/Reveal"
 import { SectionLabel } from "@/components/primitives"
 import { Marquee } from "@/components/ui/marquee"
-import { SKILLS, IDENTITY } from "@/data/content"
+import { useResumeLinkProps } from "@/components/ResumeDialog"
+import { SKILLS } from "@/data/content"
 
 export function Skills() {
+  const resumeLink = useResumeLinkProps()
+
   return (
     <section
       id="skills"
@@ -45,7 +48,7 @@ export function Skills() {
           The short list. Every project above shows its exact stack, and the
           full breakdown — from MPI to soldering — is in{" "}
           <a
-            href={IDENTITY.resume}
+            {...resumeLink}
             target="_blank"
             rel="noopener"
             className="text-teal-link underline underline-offset-2"

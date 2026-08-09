@@ -24,32 +24,35 @@ import { Experience } from "@/components/sections/Experience"
 import { Skills } from "@/components/sections/Skills"
 import { Contact } from "@/components/sections/Contact"
 import { TraceDivider } from "@/components/primitives"
+import { ResumeProvider } from "@/components/ResumeDialog"
 
 function App() {
   return (
-    <div className="min-h-screen bg-background text-foreground">
-      {/* skip link for keyboard users — appears on first Tab press */}
-      <a
-        href="#main"
-        className="absolute -top-12 left-4 z-[100] rounded-b-md bg-ink px-4 py-2.5 font-semibold text-white no-underline transition-[top] focus:top-0"
-      >
-        Skip to main content
-      </a>
+    <ResumeProvider>
+      <div className="min-h-screen bg-background text-foreground">
+        {/* skip link for keyboard users — appears on first Tab press */}
+        <a
+          href="#main"
+          className="absolute -top-12 left-4 z-[100] rounded-b-md bg-ink px-4 py-2.5 font-semibold text-white no-underline transition-[top] focus:top-0"
+        >
+          Skip to main content
+        </a>
 
-      <Nav />
+        <Nav />
 
-      <main id="main">
-        <Hero />
-        <TraceDivider /> {/* decorative PCB-trace divider */}
-        <About />
-        <Now />
-        <Projects />
-        <Experience />
-        <Skills />
-      </main>
+        <main id="main">
+          <Hero />
+          <TraceDivider /> {/* decorative PCB-trace divider */}
+          <About />
+          <Now />
+          <Projects />
+          <Experience />
+          <Skills />
+        </main>
 
-      <Contact />
-    </div>
+        <Contact />
+      </div>
+    </ResumeProvider>
   )
 }
 

@@ -19,6 +19,7 @@ import { useEffect, useRef, useState } from "react"
 import { NAV_LINKS, IDENTITY } from "@/data/content"
 import { GitHubIcon, LinkedInIcon } from "@/components/primitives"
 import { useActiveSection } from "@/hooks/useActiveSection"
+import { useResumeLinkProps } from "@/components/ResumeDialog"
 import { Mail, FileText, Menu, X } from "lucide-react"
 
 // Section ids the scroll-spy watches (derived once, module scope = stable ref).
@@ -174,6 +175,8 @@ function NavLink({
  * both the desktop bar and the mobile panel so the markup stays in one place.
  * ------------------------------------------------------------------------- */
 function ActionIcons() {
+  const resumeLink = useResumeLinkProps()
+
   return (
     <>
       <NavIcon href={IDENTITY.github} label="GitHub" external>
@@ -185,7 +188,7 @@ function ActionIcons() {
       <NavIcon href={`mailto:${IDENTITY.email}`} label="Email me">
         <Mail className="h-[18px] w-[18px]" strokeWidth={1.8} />
       </NavIcon>
-      <NavIcon href={IDENTITY.resume} label="Resume (PDF)" external>
+      <NavIcon {...resumeLink} label="Resume (PDF)" external>
         <FileText className="h-[18px] w-[18px]" strokeWidth={1.8} />
       </NavIcon>
     </>
@@ -200,11 +203,13 @@ function NavIcon({
   href,
   label,
   external,
+  onClick,
   children,
 }: {
   href: string
   label: string
   external?: boolean
+  onClick?: React.MouseEventHandler<HTMLAnchorElement>
   children: React.ReactNode
 }) {
   return (
@@ -212,6 +217,7 @@ function NavIcon({
       href={href}
       title={label}
       aria-label={label}
+      onClick={onClick}
       {...(external ? { target: "_blank", rel: "noopener" } : {})}
       className="inline-flex items-center justify-center rounded-md p-2 text-ink-soft transition-colors hover:text-copper"
     >

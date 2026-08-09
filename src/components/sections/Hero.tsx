@@ -12,9 +12,12 @@
 import { Reveal } from "@/components/Reveal"
 import { HeroPhoto } from "@/components/HeroPhoto"
 import { PulseDot } from "@/components/primitives"
+import { useResumeLinkProps } from "@/components/ResumeDialog"
 import { IDENTITY } from "@/data/content"
 
 export function Hero() {
+  const resumeLink = useResumeLinkProps()
+
   return (
     <header className="overflow-hidden border-b border-hairline">
       <div className="mx-auto grid max-w-5xl items-center gap-10 px-6 py-14 sm:py-20 md:grid-cols-[1.15fr_0.85fr] md:gap-12">
@@ -62,7 +65,7 @@ export function Hero() {
                 See my work
               </a>
               <a
-                href={IDENTITY.resume}
+                {...resumeLink}
                 target="_blank"
                 rel="noopener"
                 className="inline-flex items-center gap-2 rounded-md border border-ink px-5 py-3 text-[0.95rem] font-semibold text-ink no-underline transition-colors hover:border-copper hover:text-copper"

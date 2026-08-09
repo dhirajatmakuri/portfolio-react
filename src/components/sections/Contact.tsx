@@ -10,12 +10,15 @@
 
 import { useState, type FormEvent } from "react"
 import { GitHubIcon } from "@/components/primitives"
+import { useResumeLinkProps } from "@/components/ResumeDialog"
 import { IDENTITY } from "@/data/content"
 
 /* The "reaching out about" dropdown options */
 const TOPICS = ["A job opportunity", "Feedback on my work", "Something else"]
 
 export function Contact() {
+  const resumeLink = useResumeLinkProps()
+
   // Controlled form fields
   const [name, setName] = useState("")
   const [topic, setTopic] = useState(TOPICS[0])
@@ -135,7 +138,7 @@ export function Contact() {
                 <path d="M6.62 10.79a15.05 15.05 0 0 0 6.59 6.59l2.2-2.2a1 1 0 0 1 1.02-.24c1.12.37 2.33.57 3.57.57a1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.24.2 2.45.57 3.57a1 1 0 0 1-.25 1.02l-2.2 2.2z" />
               </svg>
             </ContactLink>
-            <ContactLink href={IDENTITY.resume} label="Resume (PDF)" external>
+            <ContactLink {...resumeLink} label="Resume (PDF)" external>
               <svg viewBox="0 0 24 24" className="h-[17px] w-[17px] fill-current">
                 <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z" />
               </svg>
@@ -160,16 +163,19 @@ function ContactLink({
   href,
   label,
   external,
+  onClick,
   children, // the icon SVG
 }: {
   href: string
   label: string
   external?: boolean
+  onClick?: React.MouseEventHandler<HTMLAnchorElement>
   children: React.ReactNode
 }) {
   return (
     <a
       href={href}
+      onClick={onClick}
       {...(external ? { target: "_blank", rel: "noopener" } : {})}
       className="inline-flex items-center gap-2.5 rounded-md border border-white/20 px-5 py-2.5 text-[0.95rem] font-medium text-[#E8EAE6] no-underline transition-colors hover:border-copper hover:text-teal-bright"
     >
