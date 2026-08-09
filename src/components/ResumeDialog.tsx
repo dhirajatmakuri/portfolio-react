@@ -25,7 +25,6 @@ import {
   createContext,
   useCallback,
   useContext,
-  useEffect,
   useRef,
   useState,
   type MouseEvent,
@@ -156,7 +155,7 @@ function ResumeDialog({
         {/* preview — only rendered once the dialog has been opened, so the PDF
             isn't fetched on page load for visitors who never ask for it */}
         <div className="min-h-0 flex-1 bg-muted">
-          {open && (
+          {loaded && (
             <>
               {/* Desktop: inline preview. */}
               <iframe
