@@ -23,7 +23,7 @@ export const IDENTITY = {
   phoneHref: "tel:+13464045507",
   linkedin: "https://www.linkedin.com/in/dhiraj-atmakuri",
   github: "https://github.com/dhirajatmakuri",
-  resume: "/assets/dhiraj-atmakuri-resume.pdf",
+  resume: "/assets/Atmakuri_Resume_Software_RefStyle.pdf",
   location: "Houston, TX",
 }
 
