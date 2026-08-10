@@ -139,7 +139,11 @@ function ProjectRow({
                 href={link.href}
                 target="_blank"
                 rel="noopener"
-                className="inline-flex items-center gap-1.5 text-sm font-semibold text-teal-link no-underline hover:underline hover:underline-offset-2"
+                // min-h-11 gives a 44px hit area. These sit in their own row
+                // rather than inside a sentence, so WCAG 2.5.8's inline
+                // exception does not apply — at 20px tall they were failing the
+                // 24px AA floor outright.
+                className="inline-flex min-h-11 items-center gap-1.5 text-sm font-semibold text-teal-link no-underline hover:underline hover:underline-offset-2"
               >
                 {link.github && <GitHubIcon />}
                 {link.label}

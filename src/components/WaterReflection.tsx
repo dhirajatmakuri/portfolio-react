@@ -283,7 +283,10 @@ function FxSlider({
         step={step}
         value={value}
         onChange={(e) => onChange(Number(e.target.value))}
-        className="w-full cursor-pointer accent-copper"
+        // h-6 lifts the drag target from 16px to the 24px WCAG 2.5.8 floor.
+        // Form controls get no inline exception, and these are drag targets on
+        // touch, where 16px is genuinely hard to grab.
+        className="h-6 w-full cursor-pointer accent-copper"
       />
     </label>
   )

@@ -24,11 +24,20 @@ export function Contact() {
   const [topic, setTopic] = useState(TOPICS[0])
   const [message, setMessage] = useState("")
 
+  // Announced to screen readers and shown under the button. Handing off to a
+  // mailto: is an invisible action — if the visitor has no mail client wired up
+  // (common on work desktops and fresh machines) the click does *nothing* at
+  // all, with no error. Without this the form silently appears broken.
+  const [status, setStatus] = useState("")
+
   /** Build a mailto: URL from the form fields and open the mail app */
   function handleSubmit(e: FormEvent) {
     e.preventDefault()
     const subject = `${topic} — ${name.trim()}`
     const body = `${message.trim()}\n\n— ${name.trim()}`
+    setStatus(
+      `Opening your mail app with the message pre-filled. If nothing happened, no mail app is set up — write to ${IDENTITY.email} instead.`
+    )
     window.location.href =
       `mailto:${IDENTITY.email}` +
       `?subject=${encodeURIComponent(subject)}` +
@@ -109,7 +118,20 @@ export function Contact() {
               Send via your email app
             </button>
 
-            <p className="text-[0.8rem] text-[#6E7A75]">
+            {/* Live region is always mounted (not conditionally rendered) so
+                assistive tech is already observing it when the text appears. */}
+            <p
+              role="status"
+              aria-live="polite"
+              className="text-[0.8rem] text-teal-bright empty:hidden"
+            >
+              {status}
+            </p>
+
+            {/* #6E7A75 measured 3.78:1 on this panel — below the 4.5:1 AA floor.
+                #8B968F is 5.5:1 and still sits a tier below the #97A39E labels,
+                so the visual hierarchy survives. */}
+            <p className="text-[0.8rem] text-[#8B968F]">
               This opens a pre-filled email in your mail app — nothing is sent
               until you hit send there. Prefer to write directly?{" "}
               <a href={`mailto:${IDENTITY.email}`} className="text-[#97A39E] underline underline-offset-2">

@@ -64,7 +64,10 @@ export function Nav() {
     >
       <div className="mx-auto flex max-w-5xl items-center justify-between gap-3 px-4 py-2 sm:px-6 sm:py-3.5">
         {/* logo: mono "> dhiraj.atmakuri" with a teal prompt tick */}
-        <a href="#" className="font-mono text-sm font-medium text-ink no-underline">
+        <a
+          href="#"
+          className="inline-flex min-h-11 items-center font-mono text-sm font-medium text-ink no-underline"
+        >
           <span className="text-copper">&gt;</span> dhiraj.atmakuri
         </a>
 
