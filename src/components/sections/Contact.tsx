@@ -61,7 +61,7 @@ export function Contact() {
         </p>
 
         <h2 className="mb-4 max-w-[17em] font-[family-name:var(--font-display)] text-[clamp(1.7rem,3.4vw,2.3rem)] font-bold leading-[1.15] tracking-[-0.015em] text-white">
-          Class of May 2026. Looking for a team that ships.
+          Feel free to reach out — I’d love to hear from you.
         </h2>
         <p className="mb-8 max-w-[36em] text-[#97A39E]">
           I'm open to software engineering, full-stack, mobile, and
