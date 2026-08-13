@@ -60,14 +60,11 @@ export function Contact() {
           CONTACT
         </p>
 
-        <h2 className="mb-4 max-w-[17em] font-[family-name:var(--font-display)] text-[clamp(1.7rem,3.4vw,2.3rem)] font-bold leading-[1.15] tracking-[-0.015em] text-white">
+        {/* mb-8 (was mb-4) now that the intro paragraph below is gone — it
+            carried the spacing down to the form grid. */}
+        <h2 className="mb-8 max-w-[17em] font-[family-name:var(--font-display)] text-[clamp(1.7rem,3.4vw,2.3rem)] font-bold leading-[1.15] tracking-[-0.015em] text-white">
           Feel free to reach out — I’d love to hear from you.
         </h2>
-        <p className="mb-8 max-w-[36em] text-[#97A39E]">
-          I'm open to software engineering, full-stack, mobile, and
-          hardware-adjacent roles. If any of the work above is relevant to what
-          you're building, I'd like to hear about it.
-        </p>
 
         <div className="mb-14 grid gap-10 md:grid-cols-[1.05fr_0.95fr] md:gap-14">
           {/* ---- Left: the pre-filled email form ---- */}
